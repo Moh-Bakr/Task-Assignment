@@ -1,7 +1,9 @@
 <?php
+require_once(__DIR__ . '/MainLogic.php');
 require_once(__DIR__ . '/Rules.php');
+require_once(__DIR__ . '/../Database/database.php');
 
-class validator
+class validator extends MainLogic
 {
     public $data;
     private $Rules;
@@ -20,6 +22,8 @@ class validator
         $this->ProductType();
 
         if (empty($this->Rules->errors)) {
+            parent::__construct($this->data);
+            MainLogic::CreateProducts();
             header('Location: ' . '/');
         }
         return $this->Rules->errors;

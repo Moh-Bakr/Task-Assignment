@@ -66,8 +66,6 @@ class Rules implements iRules
                 $this->digits($width, "width");
             }
         }
-//        $furniture = new Furniture($length, $height, $width);
-//        $furniture->validate_HWL($length, $height, $width);
     }
 
     public function addError($key, $val)
