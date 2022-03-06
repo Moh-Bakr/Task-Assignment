@@ -39,4 +39,10 @@ abstract class MainLogic extends database
                 ':length' => $this->length,
             ]);
     }
+
+    public static function AllProducts()
+    {
+        $query = "SELECT * FROM " . self::$db_table . "";
+        return database::EXCQuery($query);
+    }
 }
