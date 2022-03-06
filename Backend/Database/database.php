@@ -23,10 +23,9 @@ class database
         $statement = self::GetConnection()->prepare($query);
         $check = $statement->execute($params);
         if (explode(' ', $query)[0] == "SELECT") {
-            return "ERROR";
+            return $statement->fetchAll();
         } else {
             return $check;
         }
     }
-
 }

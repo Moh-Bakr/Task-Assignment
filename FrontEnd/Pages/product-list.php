@@ -1,4 +1,6 @@
 <?php require_once(__DIR__ . '/../layouts/navbar.php') ?>
+<?php require_once(__DIR__ . '/../../index.php') ?>
+
 <body class="d-flex flex-column" style="min-height: 100vh">
 <main style="flex: 1">
     <form action="<?php $request ?>" method="post" class="container py-4" id="products_form">

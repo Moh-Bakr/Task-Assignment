@@ -1,12 +1,13 @@
 <?php
 require_once(__DIR__ . '/../Database/database.php');
+require_once(__DIR__ . '/../../FrontEnd/scripts/Autoload.php');
 
 
 abstract class MainLogic extends database
 {
     private static $db_table = "products";
-    public $sku, $name, $price, $type, $size
-    , $weight, $height, $width, $length;
+    private $sku, $name, $price, $type
+    , $size, $weight, $height, $width, $length;
 
     public function __construct($data)
     {
@@ -40,9 +41,21 @@ abstract class MainLogic extends database
             ]);
     }
 
-    public static function AllProducts()
+    public static function GetProducts()
     {
         $query = "SELECT * FROM " . self::$db_table . "";
         return database::EXCQuery($query);
+    }
+
+    public static function DeleteProducts()
+    {
+        $products = $_POST['products'] ?? NULL;
+        if ($products != NULL) {
+            foreach ($products as $product) {
+                $id = substr($product, 7, strlen($product) - 7);
+                database::EXCQuery("DELETE FROM products WHERE id=:id", [':id' => intval($id)]);
+                Autoload::autoloader();
+            }
+        }
     }
 }
