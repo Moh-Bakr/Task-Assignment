@@ -70,20 +70,26 @@ class validator extends MainLogic implements ivalidator
         $length = trim($this->data['length']);
         $height = trim($this->data['height']);
         $width = trim($this->data['width']);
+
         if (!empty($val) && $val != 'DVD' && $val != 'Furniture' && $val != 'Book') {
             $this->addError('type', 'Type is Required');
+
         } elseif ($val == 'DVD') {
             if (!($this->required($size, "size"))) {
                 if (!($this->max($size, "size", 5))) {
                     $this->digits($size, "size");
                 }
             }
+            //  $dvd = new DVD($size);
+            //  $dvd->validate_size();
         } elseif ($val == 'Book') {
             if (!($this->required($weight, "weight"))) {
                 if (!($this->max($weight, "weight", 5))) {
                     $this->digits($weight, "weight");
                 }
             }
+            //  $book = new Book($weight);
+            //  $book->validate_weight();
         } elseif ($val == 'Furniture') {
             $this->Furniture($length, $height, $width);
         }
@@ -152,6 +158,8 @@ class validator extends MainLogic implements ivalidator
                 $this->digits($width, "width");
             }
         }
+        //  $furniture = new Furniture($length, $height, $width);
+        //  $furniture->validate_HWL($length, $height, $width);
     }
 
     public function addError($key, $val)
