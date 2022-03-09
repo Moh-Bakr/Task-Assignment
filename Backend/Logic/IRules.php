@@ -1,6 +1,6 @@
 <?php
 
-interface ivalidator
+interface IRules
 {
     public function required($val, $key);
 

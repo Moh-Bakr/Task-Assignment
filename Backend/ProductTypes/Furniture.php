@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/../Logic/MainLogic.php');
-require_once(__DIR__ . '/../Logic/Validator.php');
+require_once(__DIR__ . '/../Logic/Rules.php');
+
 
 class Furniture extends MainLogic
 {
@@ -16,21 +17,12 @@ class Furniture extends MainLogic
 
     public function validate_HWL()
     {
-        $this->Validate = new Validator();
-        if (!($this->Validate->required($this->length, "length"))) {
-            if (!($this->Validate->max($this->length, "length", 5))) {
-                $this->Validate->digits($this->length, "length");
-            }
+        $this->Validate = new Rules();
+        $Furniture = array("height" => $this->height, "width" => $this->width, "length" => $this->length);
+
+        foreach ($Furniture as $key => $key_value) {
+            $this->Validate->ValidateProduct($key, $key_value);
         }
-        if (!($this->Validate->required($this->height, "height"))) {
-            if (!($this->Validate->max($this->height, "height", 5))) {
-                $this->Validate->digits($this->height, "height");
-            }
-        }
-        if (!($this->Validate->required($this->width, "width"))) {
-            if (!($this->Validate->max($this->width, "width", 5))) {
-                $this->Validate->digits($this->width, "width");
-            }
-        }
+
     }
 }

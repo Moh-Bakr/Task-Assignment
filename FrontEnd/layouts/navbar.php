@@ -1,7 +1,7 @@
 <head>
     <?php require_once(__DIR__ . '/cdn.php') ?>
     <title>Scandiweb-Task</title>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-dark bg-dark">
         <div class="container-fluid">
             <?php if ($_SERVER['REQUEST_URI'] == '/') { ?>
             <a href='/' class="navbar-brand mb-0 h1">

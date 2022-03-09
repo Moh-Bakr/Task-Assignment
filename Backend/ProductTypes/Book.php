@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . '/../Logic/MainLogic.php');
-require_once(__DIR__ . '/../Logic/Validator.php');
+require_once(__DIR__ . '/../Logic/Rules.php');
 
 class Book extends MainLogic
 {
@@ -14,11 +14,7 @@ class Book extends MainLogic
 
     public function validate_weight()
     {
-        $this->Validate = new Validator();
-        if (!($this->Validate->required($this->weight, "weight"))) {
-            if (!($this->Validate->max($this->weight, "weight", 5))) {
-                $this->Validate->digits($this->weight, "weight");
-            }
-        }
+        $this->Validate = new Rules();
+        $this->Validate->ValidateProduct($this->weight, 'weight');
     }
 }
