@@ -18,8 +18,8 @@ class Furniture extends MainLogic
     public function validate_HWL()
     {
         $this->Validate = new Rules();
-        $Furniture = array("height" => $this->height, "width" => $this->width, "length" => $this->length);
 
+        $Furniture = ["height" => $this->height, "width" => $this->width, "length" => $this->length];
         foreach ($Furniture as $key => $key_value) {
             $this->Validate->ValidateProduct($key, $key_value);
         }
